@@ -63,4 +63,38 @@ print(Path.cwd().parents[2])
 
 print(Path.cwd().parents[3])
 
+# Using os.path to extract different parts of a path
+filePath = Path.cwd()
 
+# Get basename of the file
+print(str(os.path.basename(filePath)))
+
+# Get the root and parent path
+print(str(os.path.dirname(filePath)))
+
+# Get the dir name and base name together
+print(str(filePath).split(os.sep))
+
+# Get the size in bytes of the file
+print(os.path.getsize(filePath))
+
+# Get the list of file names
+print(os.listdir(filePath))
+
+# Get the total size of all files
+totalSize = 0
+for filename in os.listdir('/Users/mac/Desktop/python examples'):
+    totalSize += os.path.getsize(os.path.join('/Users/mac/Desktop/python examples', filename))
+
+print(totalSize)
+
+# Modifying a list of files using glob patterns
+p = Path('/Users/mac/Desktop')
+
+print(list(p.glob('*.jpg')))
+
+# Use * for multiple of any characters and ? for any single character
+print(list(p.glob('*.??g')))
+
+for imagefile in list(p.glob('*.??g')):
+    print(imagefile)
